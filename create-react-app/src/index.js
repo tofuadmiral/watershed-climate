@@ -1,17 +1,24 @@
-import * as React from 'react';
-import { createRoot } from 'react-dom/client';
-import CssBaseline from '@mui/material/CssBaseline';
-import { ThemeProvider } from '@mui/material/styles';
-import App from './App';
-import theme from './theme';
+import * as React from "react";
+import CssBaseline from "@mui/material/CssBaseline";
+import { ThemeProvider } from "@mui/material/styles";
+import App from "./App";
+import theme from "./theme";
+import ReactDOM from "react-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Dashboard from "./components/Dashboard";
 
-const rootElement = document.getElementById('root');
-const root = createRoot(rootElement);
+const rootElement = document.getElementById("root");
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <ThemeProvider theme={theme}>
-    {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
     <CssBaseline />
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+    </BrowserRouter>
   </ThemeProvider>,
+  rootElement
 );
